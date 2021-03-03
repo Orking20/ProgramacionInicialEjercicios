@@ -11,11 +11,14 @@ function probarEjercicio()
 	var peso;
 	var estadoClinico;
 	var temperaturaCorporal;
-	var perroMasPesado = 0;
+
+	var perroMasPesado;
+
 	var nombrePerroMasPesado;
 	var mascotasTotales = 0;
 	var porcentajeEnfermos;
-	var sinPeloMenorTemp = 30;
+	var sinPeloMenorTemp;
+	var nombreMenorTemp;
 	var sumaTempGato = 0;
 	var sumaTempPerro = 0;
 	var sumaTempOtro = 0;
@@ -34,10 +37,12 @@ function probarEjercicio()
 	var promedioPeso;
 	var cantMascotas = 0;
 	var nombreMascotaUltima;
-	var gatoMasLiviando = 200;
+
+	var gatoMasLiviando;
+
 	var nombreGatoMasLiviano;
 	var razaGatoMasLiviano;
-
+	var contador = 1;
 	var continuar;
 
 	do
@@ -65,7 +70,7 @@ function probarEjercicio()
 		do
 		{
 			peso = parseInt(prompt("Ingrese el peso: "));
-		}while(peso <= 0 || peso > 200);
+		}while(peso <= 0);
 		do
 		{
 			estadoClinico = prompt("Ingrese el estado clínico (enfermo/internado/adopcion): ");
@@ -73,13 +78,22 @@ function probarEjercicio()
 		do
 		{
 			temperaturaCorporal = parseInt(prompt("Ingrese la temperatura corporal: "));
-		}while(temperaturaCorporal < -30 || temperaturaCorporal > 30);
+		}while(isNaN(temperaturaCorporal));
 
 		mascotasTotales++;
 
+		if(contador == 1)
+		{
+			sinPeloMenorTemp = temperaturaCorporal;
+			gatoMasLiviando = peso;
+			perroMasPesado = peso;
+
+			contador--;
+		}
+
 		if(mascota == "perro")
 		{
-			if(peso > perroMasPesado)
+			if(peso >= perroMasPesado)
 			{
 				perroMasPesado = peso;
 				nombrePerroMasPesado = nombre
@@ -102,14 +116,15 @@ function probarEjercicio()
 
 		if(pelaje == "sin pelo")
 		{
-			if(temperaturaCorporal < sinPeloMenorTemp)
+			if(temperaturaCorporal <= sinPeloMenorTemp)
 			{
-				sinPeloMenorTemp = temperaturaCorporal
+				sinPeloMenorTemp = temperaturaCorporal;
+				nombreMenorTemp = nombre;
 			}
 
 			if(mascota == "gato")
 			{
-				if(peso < gatoMasLiviando)
+				if(peso <= gatoMasLiviando)
 				{
 					gatoMasLiviando = peso;
 					nombreGatoMasLiviano = nombre;
@@ -153,7 +168,7 @@ function probarEjercicio()
 	document.write("Peso del perro mas pesado: " + perroMasPesado + " <br>");
 	document.write("Porcentaje de mascotas enfermas: " + porcentajeEnfermos + " <br>");
 	document.write("Nombre de la última mascota que no sea ni perro ni gato: " + nombreMascotaUltima + " <br>");
-	document.write("Mascota sin pelo con menor temperatura corporal: " + sinPeloMenorTemp + " <br>");
+	document.write("La mascota sin pelo con menor temperatura corporal es " + nombreMenorTemp + " con una temperatura de " + sinPeloMenorTemp + " <br>");
 
 	if(promedioTempPerro > promedioTempGato)
 	{
