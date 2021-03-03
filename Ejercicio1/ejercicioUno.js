@@ -11,9 +11,7 @@ function probarEjercicio()
 	var peso;
 	var estadoClinico;
 	var temperaturaCorporal;
-
 	var perroMasPesado;
-
 	var nombrePerroMasPesado;
 	var mascotasTotales = 0;
 	var porcentajeEnfermos;
@@ -37,9 +35,7 @@ function probarEjercicio()
 	var promedioPeso;
 	var cantMascotas = 0;
 	var nombreMascotaUltima;
-
 	var gatoMasLiviando;
-
 	var nombreGatoMasLiviano;
 	var razaGatoMasLiviano;
 	var contador = 1;
